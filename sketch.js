@@ -125,7 +125,7 @@ function draw() {
     if (die[4] % 2 === 0) {
       drawDie(525, 665, die[1]);
 
-      if (blueMoved === false && blueSpaces !== 36) {
+      if (blueMoved === false && blueSpaces !== 30) {
         if (blueSpaces % 6 === 0) {
           bluePiece.moveUp();
         } else {
