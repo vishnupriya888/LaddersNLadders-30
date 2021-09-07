@@ -10,7 +10,7 @@ var bluePiece, blueSpaces, blueMoved;
 var redPiece, redSpaces, redMoved;
 
 function preload() {
-  board = loadImage("sprites/2.png");
+  board = loadImage("sprites/bg.png");
 }
 
 function drawDie(x, y, side) {
@@ -53,76 +53,30 @@ function drawDie(x, y, side) {
 
 function checkForBlueUpsAndDowns() {
   //ladders
-  if (blueSpaces === 2) {
-    Matter.Body.setVelocity(bluePiece.body, { x: 7, y: -13 });
-    blueSpaces = 23;
+  if (blueSpaces === 3) {
+    Matter.Body.setVelocity(bluePiece.body, { x: 0, y: -22 });
+    blueSpaces = 15;
   }
-
-  if (blueSpaces === 6) {
-    Matter.Body.setVelocity(bluePiece.body, { x: -6, y: -26 });
-    blueSpaces = 45;
+  if (blueSpaces === 8) {
+    Matter.Body.setVelocity(bluePiece.body, { x: 10, y: -13 });
+    blueSpaces = 18;
   }
-
-  if (blueSpaces === 20) {
-    Matter.Body.setVelocity(bluePiece.body, { x: 7, y: -26 });
-    blueSpaces = 59;
+  if (blueSpaces === 12) {
+    Matter.Body.setVelocity(bluePiece.body, { x: 0, y: -22 });
+    blueSpaces = 24;
   }
-
-  if (blueSpaces === 57) {
-    Matter.Body.setVelocity(bluePiece.body, { x: 7, y: -26 });
-    blueSpaces = 96;
+  if (blueSpaces === 16) {
+    Matter.Body.setVelocity(bluePiece.body, { x: 0, y: -22 });
+    blueSpaces = 28;
   }
-
-  if (blueSpaces === 28) {
-    Matter.Body.setVelocity(bluePiece.body, { x: 7, y: -13 });
-    blueSpaces = 49;
+  if (blueSpaces === 25) {
+    Matter.Body.setVelocity(bluePiece.body, { x: 10, y: -13 });
+    blueSpaces = 35;
   }
-
-  if (blueSpaces === 52) {
-    Matter.Body.setVelocity(bluePiece.body, { x: 0, y: -13 });
-    blueSpaces = 72;
+  if (blueSpaces === 30) {
+    Matter.Body.setVelocity(bluePiece.body, { x: -10, y: -10 });
+    blueSpaces = 32;
   }
-
-  if (blueSpaces === 71) {
-    Matter.Body.setVelocity(bluePiece.body, { x: -7, y: -13 });
-    blueSpaces = 92;
-  }
-
-  //snakes
-  // if (blueSpaces === 43) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: 7, y: 20 });
-  //   blueSpaces = 17;
-  // }
-
-  // if (blueSpaces === 50) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: -32, y: 26 });
-  //   blueSpaces = 5;
-  // }
-
-  // if (blueSpaces === 56) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: 20, y: 33 });
-  //   blueSpaces = 8;
-  // }
-
-  // if (blueSpaces === 73) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: -13, y: 38 });
-  //   blueSpaces = 15;
-  // }
-
-  // if (blueSpaces === 87) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: 12, y: 26 });
-  //   blueSpaces = 49;
-  // }
-
-  // if (blueSpaces === 84) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: -7, y: 13 });
-  //   blueSpaces = 63;
-  // }
-
-  // if (blueSpaces === 98) {
-  //   Matter.Body.setVelocity(bluePiece.body, { x: -14, y: 39 });
-  //   blueSpaces = 40;
-  // }
 }
 
 function setup() {
@@ -138,20 +92,11 @@ function setup() {
 
   //create the die array
   die = [false, 1, 0, false, 0];
-  //item 0 = if die is rolling
-  //item 1 = current number displayed
-  //item 2 = times to die will change
-  //item 3 = blinking time or not
-  //item 4 = blinking counter
 
   //create the pieces
-  bluePiece = new BluePiece(20, 570, 40, 40);
+  bluePiece = new BluePiece(50, 550, 60, 60);
   blueSpaces = 1;
   blueMoved = false;
-
-  //redPiece = new RedPiece(40, 570, 40, 40);
-  redSpaces = 1;
-  redMoved = true;
 }
 
 function draw() {
@@ -166,7 +111,6 @@ function draw() {
 
   //display the pieces
   bluePiece.display();
-  //redPiece.display();
 
   //add a divider
   stroke("black");
@@ -181,12 +125,12 @@ function draw() {
     if (die[4] % 2 === 0) {
       drawDie(525, 665, die[1]);
 
-      if (blueMoved === false && blueSpaces !== 100) {
-        if (blueSpaces % 10 === 0) {
+      if (blueMoved === false && blueSpaces !== 36) {
+        if (blueSpaces % 6 === 0) {
           bluePiece.moveUp();
         } else {
-          var num = Math.floor(blueSpaces / 10);
-          if (num === 0 || num === 2 || num === 4 || num === 6 || num === 8) {
+          var num = Math.floor(blueSpaces / 6);
+          if (num === 0 || num === 2 || num === 4 || num === 6) {
             bluePiece.moveRight();
           } else {
             bluePiece.moveLeft();
@@ -223,6 +167,9 @@ function draw() {
       die[3] = true;
       die[4] = die[1] * 2;
     }
+  }
+  if (blueSpaces >= 36) {
+    keyPressed = false;
   }
 }
 

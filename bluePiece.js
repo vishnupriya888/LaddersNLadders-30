@@ -1,41 +1,41 @@
-class BluePiece{
-    constructor(x, y, width, height){
-        var rectOptions = {
-            friction: 0,
-            frictionAir: 0.098,
-            density: 0.001
-        }
-        this.body = Bodies.rectangle(x, y, width, height, rectOptions);
-        this.image = loadImage("sprites/bluePiece.png");
-        this.width = width;
-        this.height = height;
-        //this.body.collisionFilter.group = 2;
-        World.add(world, this.body);
-    }
+class BluePiece {
+  constructor(x, y, width, height) {
+    var rectOptions = {
+      friction: 0,
+      frictionAir: 0.098,
+      density: 0.001,
+    };
+    this.body = Bodies.rectangle(x, y, width, height, rectOptions);
+    this.image = loadImage("sprites/bluePiece.png");
+    this.width = width;
+    this.height = height;
 
-    display(){
-        var pos = this.body.position;
-        var angle = this.body.angle;
+    World.add(world, this.body);
+  }
 
-        push();
-        translate(pos.x, pos.y);
-        rotate(angle);
-        imageMode(CENTER);
-        noStroke();
-        fill(67, 78, 97);
-        image(this.image, 0, 0, this.width, this.height);
-        pop();
-    }
+  display() {
+    var pos = this.body.position;
+    var angle = this.body.angle;
 
-    moveRight(){
-        Matter.Body.setVelocity(this.body, {x: 6.85, y: 0});
-    }
+    push();
+    translate(pos.x, pos.y);
+    rotate(angle);
+    imageMode(CENTER);
+    noStroke();
+    fill(67, 78, 97);
+    image(this.image, 0, 0, this.width, this.height);
+    pop();
+  }
 
-    moveLeft(){
-        Matter.Body.setVelocity(this.body, {x: -6.8, y: 0});
-    }
+  moveRight() {
+    Matter.Body.setVelocity(this.body, { x: 11, y: 0 });
+  }
 
-    moveUp(){
-        Matter.Body.setVelocity(this.body, {x: 0, y: -6.8});
-    }
+  moveLeft() {
+    Matter.Body.setVelocity(this.body, { x: -11, y: 0 });
+  }
+
+  moveUp() {
+    Matter.Body.setVelocity(this.body, { x: 0, y: -11.5 });
+  }
 }
