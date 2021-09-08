@@ -10,7 +10,7 @@ var bluePiece, blueSpaces, blueMoved;
 var redPiece, redSpaces, redMoved;
 
 function preload() {
-  board = loadImage("sprites/bg.png");
+  board = loadImage("2.png");
 }
 
 function drawDie(x, y, side) {
@@ -69,13 +69,13 @@ function checkForBlueUpsAndDowns() {
     Matter.Body.setVelocity(bluePiece.body, { x: 0, y: -22 });
     blueSpaces = 28;
   }
-  if (blueSpaces === 25) {
+  if (blueSpaces === 23) {
     Matter.Body.setVelocity(bluePiece.body, { x: 10, y: -13 });
-    blueSpaces = 35;
+    blueSpaces = 27;
   }
-  if (blueSpaces === 30) {
+  if (blueSpaces === 19) {
     Matter.Body.setVelocity(bluePiece.body, { x: -10, y: -10 });
-    blueSpaces = 32;
+    blueSpaces = 29;
   }
 }
 
